@@ -12,14 +12,14 @@ Usage: import the module (see Jupyter notebooks for examples), or run from
        the command line as such:
 
     # Train a new model starting from pre-trained COCO weights
-    python3 sun.py train --dataset=/scratch/datasets/SUNRGBD/train --weights=coco
+    python3 sun.py train --dataset=/Users/ekaterina/Desktop/diploma/mask_rcnn/datasets/SUNRGBD/train --weights=coco
 
 
     # Resume training a model that you had trained earlier
-    python3 sun.py train --dataset=/scratch/datasets/SUNRGBD/train --weights=last
+    python3 sun.py train --dataset=/path/to/sun/dataset/train --weights=last
 
     # Train a new model starting from ImageNet weights
-    python3 sun.py train --dataset=//scratch/datasets/SUNRGBD/train --weights=imagenet
+    python3 sun.py train --dataset=/path/to/sun/dataset/train --weights=imagenet
 
     # Apply color splash to an image
     python3 sun.py splash --weights=/path/to/weights/file.h5 --image=<URL or path to file>
@@ -34,12 +34,6 @@ import json
 import datetime
 import numpy as np
 import skimage.draw
-
-import tensorflow as tf
-from keras.backend.tensorflow_backend import set_session
-config = tf.ConfigProto()
-config.gpu_options.per_process_gpu_memory_fraction = 0.3
-set_session(tf.Session(config=config))
 
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../../")
@@ -70,14 +64,13 @@ class SunConfig(Config):
 
     # We use a GPU with 12GB memory, which can fit two images.
     # Adjust down if you use a smaller GPU.
-    #GPU_COUNT = 4
-    IMAGES_PER_GPU = 1
+    IMAGES_PER_GPU = 2
 
     # Number of classes (including background)
     NUM_CLASSES = 1 + 13  # Background + balloon
 
     # Number of training steps per epoch
-    STEPS_PER_EPOCH = 1000
+    STEPS_PER_EPOCH = 100
 
     # Skip detections with < 90% confidence
     DETECTION_MIN_CONFIDENCE = 0.9
