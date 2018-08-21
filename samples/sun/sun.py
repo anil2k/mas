@@ -1,10 +1,10 @@
 """
 Mask R-CNN
-Train on the toy Balloon dataset and implement color splash effect.
+Train on the SUN dataset.
 
 Copyright (c) 2018 Matterport, Inc.
 Licensed under the MIT License (see LICENSE for details)
-Written by Waleed Abdulla
+Mask RCNN is Written by Waleed Abdulla
 
 ------------------------------------------------------------
 
@@ -25,7 +25,7 @@ Usage: import the module (see Jupyter notebooks for examples), or run from
     python3 sun.py splash --weights=/path/to/weights/file.h5 --image=<URL or path to file>
 
     # Apply color splash to video using the last weights you trained
-    python3 sun.py splash --weights=last --video=<URL or path to file>
+    python3 sun.py splash --weights=last --video=<URL or path to file>ß
 """
 
 import os
