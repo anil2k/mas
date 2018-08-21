@@ -18,6 +18,11 @@ import multiprocessing
 import numpy as np
 import skimage.transform
 import tensorflow as tf
+
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+session = tf.Session(config=config)
+
 import keras
 import keras.backend as K
 import keras.layers as KL
