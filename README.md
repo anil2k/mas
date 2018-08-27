@@ -55,6 +55,9 @@ to prepare the training data.
 * [inspect_sun_weights.ipynb](samples/sun/inspect_sun_weights.ipynb)
 This notebooks inspects the weights of a trained model and looks for anomalies and odd patterns.
 
+* [Segmentation_of_video.ipynb](Segmentation_of_video.ipynb)
+This notebooks converts mp4 video to a video with an image segmentation on top.
+
 
 # Training using initial MS COCO weights
 MS COCO weights are used as a starting point for trainin the model on SUN RGB-D and NYU datasets. Training and evaluation code is in `samples/sun/sun.py`. For reprodusing the results you need to run all scripts from the `samples/sun` directory from the command line as such:
