@@ -3,20 +3,28 @@
 ## Description
 
 Tools in this repository are designed to allow the user to retrain Mask R-CNN model on SUN RGB-D or NYU dataset for image segmantation task with initial COCO weghts. This repository is a follow-up development of a project created for my master's thesis (see [here](https://github.com/hateful-kate/Mask_RCNN/blob/master/Master's_thesis.pdf)).
-The library for these tools is based on Python implementation of Mask R-CNN by Waleed Abdulla, Matterport, Inc. (see [here](https://github.com/matterport/Mask_RCNN)). The model generates bounding boxes and segmentation masks for each instance of an object in the image. Mask RCNN is based on Feature Pyramid Network (FPN) and a ResNet101 backbone.
+
+The library for these tools is based on Python implementation of Mask R-CNN by Waleed Abdulla, Matterport, Inc. (see [here](https://github.com/matterport/Mask_RCNN)). The model generates bounding boxes and segmentation masks for an object in the image. It's based on Feature Pyramid Network (FPN) and a ResNet101 backbone. 
+
+This repository contains the details of implementation, which obtains a score of `[AP(IoU=0.5)=0.697]` for the SUN RGB-D dataset and `[AP(IoU=0.5)=0.1]` for NYU dataset.
+
+The repository includes:
+* Source code of Mask R-CNN built on FPN and ResNet101.
+* Instruction and training code for the SUN RGB-D and NYU datasets.
+* Pre-trained weights on MS COCO.
+* Example of training on this datasets, with emphasize on adapting code to dataset with multiple classes.
+* Jupyter notebooks to visualize the detection result.
+
 
 ![Example detection](assets/chairs.png)
 
-### Samples
-
-![Buildings detection](samples/out_b_150.png)
-
-![Pitches detection](samples/out3.png)
-
-![Instance Segmentation Sample](assets/street.png)
-
-
 ## Usage
+### Requirements
+Python 3.4, TensorFlow GPU 1.10.0, Keras 2.1.3 and other common packages listed in `requirements.txt`.
+
+For reprodusing the results, download pre-trained COCO weights (mask_rcnn_coco.h5) from the [releases page](https://github.com/matterport/Mask_RCNN/releases).
+To training or testing the model, `pycocotools` package is required. Installation might be found [here]( https://github.com/cocodataset/cocoapi)
+
 ### Installation
 It is developed under CentOS 7 with CUDA 9.0 and cuDNN v7.0.5. The program was mostly tested with Nvidia GeForce GTX 1080 Ti GPU.
 
@@ -33,15 +41,6 @@ cd ..
 pip3 install -r requirements.txt
 ```
 
-
-The repository includes:
-* Source code of Mask R-CNN built on FPN and ResNet101.
-* Training code for MS COCO
-* Pre-trained weights for MS COCO
-* Jupyter notebooks to visualize the detection pipeline at every step
-* ParallelModel class for multi-GPU training
-* Evaluation on MS COCO metrics (AP)
-* Example of training on your own dataset
 
 
 The code is documented and designed to be easy to extend. If you use it in your research, please consider citing this repository (bibtex below). If you work on 3D vision, you might find our recently released [Matterport3D](https://matterport.com/blog/2017/09/20/announcing-matterport3d-research-dataset/) dataset useful as well.
@@ -171,56 +170,4 @@ gradients (sum vs mean across batches and GPUs). Or, maybe the official model us
 clipping to avoid this issue. We do use gradient clipping, but don't set it too aggressively.
 We found that smaller learning rates converge faster anyway so we go with that.
 
-## Citation
-Use this bibtex to cite this repository:
-```
-@misc{matterport_maskrcnn_2017,
-  title={Mask R-CNN for object detection and instance segmentation on Keras and TensorFlow},
-  author={Abdulla, Waleed},
-  year={2017},
-  publisher={Github},
-  journal={GitHub repository},
-  howpublished={\url{https://github.com/matterport/Mask_RCNN}},
-}
-```
 
-## Contributing
-Contributions to this repository are welcome. Examples of things you can contribute:
-* Speed Improvements. Like re-writing some Python code in TensorFlow or Cython.
-* Training on other datasets.
-* Accuracy Improvements.
-* Visualizations and examples.
-
-You can also [join our team](https://matterport.com/careers/) and help us build even more projects like this one.
-
-## Requirements
-Python 3.4, TensorFlow 1.3, Keras 2.0.8 and other common packages listed in `requirements.txt`.
-
-### MS COCO Requirements:
-To train or test on MS COCO, you'll also need:
-* pycocotools (installation instructions below)
-* [MS COCO Dataset](http://cocodataset.org/#home)
-* Download the 5K [minival](https://dl.dropboxusercontent.com/s/o43o90bna78omob/instances_minival2014.json.zip?dl=0)
-  and the 35K [validation-minus-minival](https://dl.dropboxusercontent.com/s/s3tw5zcg7395368/instances_valminusminival2014.json.zip?dl=0)
-  subsets. More details in the original [Faster R-CNN implementation](https://github.com/rbgirshick/py-faster-rcnn/blob/master/data/README.md).
-
-If you use Docker, the code has been verified to work on
-[this Docker container](https://hub.docker.com/r/waleedka/modern-deep-learning/).
-
-
-## Installation
-1. Install dependencies
-   ```bash
-   pip3 install -r requirements.txt
-   ```
-2. Clone this repository
-3. Run setup from the repository root directory
-    ```bash
-    python3 setup.py install
-    ``` 
-3. Download pre-trained COCO weights (mask_rcnn_coco.h5) from the [releases page](https://github.com/matterport/Mask_RCNN/releases).
-4. (Optional) To train or test on MS COCO install `pycocotools` from one of these repos. They are forks of the original pycocotools with fixes for Python3 and Windows (the official repo doesn't seem to be active anymore).
-
-    * Linux: https://github.com/waleedka/coco
-    * Windows: https://github.com/philferriere/cocoapi.
-    You must have the Visual C++ 2015 build tools on your path (see the repo for additional details)
