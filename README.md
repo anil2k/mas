@@ -1,5 +1,5 @@
 # Mask R-CNN for Image Segmentation of SUN RGB-D and NYU datasets
-
+![Example detection](assets/chairs.png)
 ## Description
 
 Tools in this repository are designed to allow the user to retrain Mask R-CNN model on SUN RGB-D or NYU dataset for image segmantation task with initial COCO weights. This repository is a follow-up development of a project created for my master's thesis (see [here](https://github.com/hateful-kate/Mask_RCNN/blob/master/Master's_thesis.pdf)).
@@ -13,8 +13,7 @@ The repository includes:
 * Example of training on this datasets, with emphasize on adapting code to dataset with multiple classes.
 * Jupyter notebooks to visualize the detection result.
 
-
-![Example detection](assets/chairs.png)
+![Trained model on Video](assets/output.gif)
 
 ## Usage
 ### Requirements
