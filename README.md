@@ -58,6 +58,9 @@ This notebooks inspects the weights of a trained model and looks for anomalies a
 * [Segmentation_of_video.ipynb](Segmentation_of_video.ipynb)
 This notebooks converts mp4 video to a video with an image segmentation on top.
 
+* [Kinect_streaming_segmentation.ipynb](Kinect_streaming_segmentation.ipynb)
+This notebooks uses Kinect v2 color channel for a video streaming with an image segmentation on top.
+
 * [Image_segmentation_video_stream.ipynb](Image_segmentation_video_stream.ipynb)
 This notebooks uses local camera to a video stream with an image segmentation on top.
 
