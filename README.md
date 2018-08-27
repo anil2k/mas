@@ -1,4 +1,4 @@
-# Mask R-CNN for Image Segmentation of SUN RGB-D and NYU dataset
+# Mask R-CNN for Image Segmentation of SUN RGB-D and NYU datasets
 
 ## Description
 
