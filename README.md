@@ -2,7 +2,7 @@
 ![Example detection](assets/chairs.png)
 ## Description
 
-Tools in this repository are designed to allow the user to retrain Mask R-CNN model on SUN RGB-D or NYU dataset for image segmantation task with initial COCO weights. This repository is a follow-up development of a project created for my master's thesis (see [here](https://github.com/hateful-kate/Mask_RCNN/blob/master/Master's_thesis.pdf)).
+Tools in this repository are designed to allow the user to retrain Mask R-CNN model on SUN RGB-D or NYU dataset for image segmentation task with pre-trained COCO weights. This repository is a follow-up development of a project created for my master's thesis (see [here](https://github.com/hateful-kate/Mask_RCNN/blob/master/Master's_thesis.pdf)).
 
 The library for these tools is based on Python implementation of Mask R-CNN by Waleed Abdulla, Matterport, Inc. (see [here](https://github.com/matterport/Mask_RCNN)). The model generates bounding boxes and segmentation masks for an object in the image. It's based on Feature Pyramid Network (FPN) and a ResNet101 backbone. 
 
@@ -19,7 +19,7 @@ The repository includes:
 ### Requirements
 Python 3.4, TensorFlow GPU 1.10.0, Keras 2.1.3 and other common packages listed in `requirements.txt`.
 
-For reprodusing the results, download pre-trained COCO weights (mask_rcnn_coco.h5) from the [releases page](https://github.com/matterport/Mask_RCNN/releases).
+For reproducing the results, download pre-trained COCO weights (mask_rcnn_coco.h5) from the [releases page](https://github.com/matterport/Mask_RCNN/releases).
 To training or testing the model, `pycocotools` package is required. Installation guide might be found [here]( https://github.com/cocodataset/cocoapi).
 
 ### Installation
@@ -39,7 +39,7 @@ pip3 install -r requirements.txt
 ```
 
 ### Getting Started
-* [demo.ipynb](samples/demo.ipynb) Is the easiest way to start. It shows an example of using a model pre-trained on MS COCO to segment objects in your own images. It includes code to run object detection and instance segmentation on arbitrary images. The same as in initial Mask RCNN repository.
+* [demo.ipynb](samples/demo.ipynb) Is the easiest way to start. It shows an example of using a model pre-trained on MS COCO to segment objects in your own images. It includes code to run object detection and instance segmentation on arbitrary images. The same as in original Mask RCNN repository.
 
 * ([model.py](mrcnn/model.py), [utils.py](mrcnn/utils.py), [config.py](mrcnn/config.py)): These files contain the main Mask RCNN implementation.  Model.py is changed to work with a multiclass classification.
 
@@ -63,8 +63,8 @@ This notebooks uses local camera to a video stream with an image segmentation on
 
 ![Example streaming](assets/Segmentation_stream.png)
 
-# Training using initial MS COCO weights
-MS COCO weights are used as a starting point for trainin the model on SUN RGB-D and NYU datasets. Training and evaluation code is in `samples/sun/sun.py`. For reprodusing the results you need to run all scripts from the `samples/sun` directory from the command line as such:
+# Training using pre-trained MS COCO weights
+MS COCO weights are used as a starting point for training the model on SUN RGB-D and NYU datasets. Training and evaluation code is in `samples/sun/sun.py`. For reproducing the results you need to run all scripts from the `samples/sun` directory from the command line as such:
 
 ```
 # Train a new model starting from pre-trained COCO weights
@@ -82,10 +82,8 @@ The training schedule, learning rate, and other parameters should be set in `sam
 
 
 ## Differences from the Official Implementation
-This implementation follows the Mask RCNN paper for the most part, but there are a few cases where we deviated in favor of code simplicity and generalization. These are some of the differences we're aware of. If you encounter other differences, please do let us know.
-
 * **Mini-masks:** All mini-masks are removed.
-* **Multi-threading:** Not alloved as it mostly slows down the whole system, bacause more resources are spent on administrative work, than on execution itself.
+* **Multi-threading:** Not alloved as it mostly slows down the whole system, because more resources are spent on administrative work, than on execution itself.
 * **Learning Rate:** The paper uses a learning rate of 0.02, here they are changed to 0.001 for a better convergence without significant 
 decrease in speed.
 
