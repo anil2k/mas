@@ -21,7 +21,7 @@ The repository includes:
 `Python 3.4`, `TensorFlow GPU 1.10.0`, `Keras 2.1.3` and other common packages listed in `requirements.txt`. For Kinect v2 integration, `pylibfreenect2` package and all dependencies are used, which might be installed from [here](https://github.com/r9y9/pylibfreenect2).
 
 For reproducing the results, download pre-trained COCO weights (mask_rcnn_coco.h5) from the [releases page](https://github.com/matterport/Mask_RCNN/releases).
-To training or testing the model, `pycocotools` package is required. Installation guide might be found [here]( https://github.com/cocodataset/cocoapi).
+For training or testing the model, `pycocotools` package is required. Installation guide might be found [here]( https://github.com/cocodataset/cocoapi).
 
 ### Installation
 It is developed under CentOS 7 with CUDA 9.0 and cuDNN v7.0.5. The program was mostly tested with Nvidia GeForce GTX 1080 Ti GPU.
